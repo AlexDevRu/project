@@ -21,6 +21,7 @@ let paths = {
 		src:  [
 			'node_modules/normalize.css/normalize.css',
 			baseDir + '/fonts/*.css',
+			baseDir + '/' + preprocessor + '/slick.*',
 			baseDir + '/' + preprocessor + '/style.*',
 		],
 		dest: baseDir + '/css',
@@ -113,7 +114,7 @@ function cleanimg() {
 var ghPages = require('gulp-gh-pages');
 
 function deploy() {
-  return gulp.src(baseDir + '/app/**/*')
+  return src(baseDir + '/**/*')
     .pipe(ghPages());
 }
 
