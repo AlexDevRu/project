@@ -9,7 +9,7 @@ $('.header__search a').click(function(e) {
 	$('.header__search input').focus();
 	$('.header__search input').animate({width: '200'}, 600);
 	$('.header__search_path').attr({fill: 'white'});
-	if(!mediaQuery1.matches) $('#cssmenu').hide();
+	if(!mediaQuery1.matches) $('.header__menu').hide();
 });
 
 $('.header__search input').blur(function(e) {
@@ -17,7 +17,7 @@ $('.header__search input').blur(function(e) {
   	$('.header__search input').animate({width: '0'}, 300, function() {
   		$(this).hide();
   		$('.header__search_path').attr({fill: 'black'});
-  		$('#cssmenu').show();
+  		$('.header__menu').show();
   	});
   }
   else {
@@ -30,23 +30,10 @@ var mediaQuery2 = window.matchMedia('(max-width: 550px)');
 
 moveImageIntro(mediaQuery1);
 moveImageCourses(mediaQuery1);
-moveItemsToMenu(mediaQuery1);
-menuFix(mediaQuery1);
 moveTitleSlide(mediaQuery2);
 mediaQuery1.addListener(moveImageIntro);
 mediaQuery1.addListener(moveImageCourses);
-mediaQuery1.addListener(moveItemsToMenu);
-mediaQuery1.addListener(menuFix);
 mediaQuery2.addListener(moveTitleSlide);
-
-function menuFix(m) {
-  // if(m.matches) {
-  //   cssmenu.hide();
-  //   cssmenu.find('ul').removeClass('open');
-  // } else {
-  //   cssmenu.show();
-  // }
-}
 
 var url;
 function moveImageIntro(m) {
@@ -110,88 +97,46 @@ function moveTitleSlide(m) {
   } 
 }
 
-function moveItemsToMenu(m) {
+
+$('.header__burger').on('click', function(event) {
+  $('.header__menu').slideToggle();
+  $(this).toggleClass('menu-opened');
+  if($(this).hasClass('menu-opened')) $('body').addClass('lock');
+  else $('body').removeClass('lock');
+});
+
+
+mediafunc768();
+mediaQuery1.addListener(mediafunc768);
+
+function mediafunc768() {
+  var handleSubClick = function(event) {
+    $(this).find('>a').toggleClass('active-link');
+    $(this).find('>ul').slideToggle();
+    event.stopPropagation();
+  };
+  var disableLinks = function(event) {
+    event.preventDefault();
+  };
   var onfocusInputMobile = function() {
     $('.header__search_wrapper').css({width: '100%', border: '1px solid #757575'});
   };
-  if(m.matches) {
-    $('#cssmenu').append($('.header__search'));
+  if(mediaQuery1.matches) {
+    $('li.has-sub').on('click', handleSubClick);
+    $('.header__menu li.has-sub>a').on('click', disableLinks);
 
-    $('.header__search input').on('focus', onfocusInputMobile);
-    
-    $('#cssmenu').append($('.intro__socials').clone().addClass('intro__socials_in_menu').removeClass('intro__socials'));
+    $('.header__menu').append($('.header__search'));
+    $('.header__search input').on('focus', onfocusInputMobile); 
+    $('.header__menu').append($('.intro__socials').clone().addClass('intro__socials_in_menu').removeClass('intro__socials'));
   } else {
-    $('#cssmenu').after($('.header__search'));
-    $('.header__search').off('focus', onfocusInputMobile);
+    $('li.has-sub').off('click', handleSubClick);
+    $('.header__menu li.has-sub>a').off('click', disableLinks);
+
+    $('.header__menu').after($('.header__search'));
+    $('.header__search input').off('focus', onfocusInputMobile);
     $('.intro__socials_in_menu').remove();
   }
 }
-
-(function($) {
-$.fn.menumaker = function(options) {  
- var cssmenu = $(this), settings = $.extend({
-   format: "dropdown",
-   sticky: false
- }, options);
- return this.each(function() {
-   $(".header__burger").on('click', function(){
-     $(this).toggleClass('menu-opened');
-     var mainmenu = $(cssmenu).find('ul');
-
-    if($(this).hasClass('menu-opened')) $('body').addClass('lock');
-    else $('body').removeClass('lock');
-
-    $(cssmenu).slideToggle();
-
-     if (mainmenu.hasClass('open')) {
-       mainmenu.removeClass('open');
-     }
-     else {
-       mainmenu.addClass('open');
-       if (settings.format === "dropdown") {
-         mainmenu.find('ul').show();
-       }
-     }
-   });
-   cssmenu.find('li ul').parent().addClass('has-sub');
-  
-  multiTg = function() {
-     cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
-     cssmenu.find('.submenu-button').on('click', function() {
-       $(this).toggleClass('submenu-opened');
-       if ($(this).siblings('ul').hasClass('open')) {
-         $(this).siblings('ul').removeClass('open').slideToggle();
-       }
-       else {
-         $(this).siblings('ul').addClass('open').slideToggle();
-       }
-     });
-   };
-   if (settings.format === 'multitoggle') multiTg();
-   else cssmenu.addClass('dropdown');
-    resizeFix = function() {
-      var mediasize = 1220;
-         if ($( window ).width() > mediasize) {
-           cssmenu.show();
-         }
-         if ($(window).width() <= mediasize) {
-            cssmenu.hide();
-           cssmenu.find('ul').removeClass('open');
-         }
-       };
-       resizeFix();
-       return $(window).on('resize', resizeFix);
- });
-  };
-})(jQuery);
-
-(function($){
-$(document).ready(function(){
-$("#cssmenu").menumaker({
-   format: "multitoggle"
-});
-});
-})(jQuery);
 
 
 $(document).ready(function($) {
@@ -226,3 +171,42 @@ $(document).ready(function($) {
     return false;
   });
 });
+
+
+// var buttons = $('.btn').map(function(index, elem) {
+//   return ({rect: elem.getBoundingClientRect(), elem: elem});
+// });
+// var btn = null;
+// var offset = 20;
+// $('body').on('mousemove', function(event) {
+//   var x = event.clientX;
+//   var y = event.clientY;
+//   for(var obj of buttons) {
+//     if(obj.rect.top <= y+offset && obj.rect.bottom <= y-offset && 
+//       obj.rect.left <= x+offset && obj.rect.right <= x-offset) {
+//       btn = obj;
+//       break;
+//     }
+//   }
+//   if(!btn) {
+//     console.log('yes');
+//     for(var obj of buttons) {
+//       $(btn.elem).find('.circle').css({transform: 'translate(0, -50%)'});
+//     }
+//     btn = null;
+//   } else {
+//     console.log('no');
+//     var shiftX, shiftY;
+    
+//     if(btn.rect.top < y) shiftY = (y - btn.rect.top)/2;
+//     else if(btn.rect.bottom < y) shiftY = (y - btn.rect.bottom)/2;
+
+//     if(btn.rect.right < x) shiftX = (x - btn.rect.right)/2;
+//     else if(btn.rect.left < x) shiftX = (x - btn.rect.left)/2;
+
+//     if(shiftX > 0) shiftX = '+' + shiftX;
+//     if(shiftY > 0) shiftY = '+' + shiftY;
+
+//     $(btn.elem).find('.circle').css({transform: 'translate('+shiftX+','+'-50%'+shiftY+')'});
+//   }
+// });
