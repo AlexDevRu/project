@@ -347,10 +347,10 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		max-width: 876px;
+		//max-width: 876px;
 		input[type="text"] {
 			width: 252px;
-			margin-bottom: 45px;
+			//margin-bottom: 45px;
 		}
 		input[type="text"]:last-child {
 			margin-bottom: 0;
@@ -359,8 +359,7 @@
 	&__checkbox {
 		flex-basis: 100%;
 		font-size: 14px;
-		margin-top: 49px;
-		margin-bottom: 40px;
+		margin-top: 45px;
 	}
 	&__btn {
 		background-color: transparent;
