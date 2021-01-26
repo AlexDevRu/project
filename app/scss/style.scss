@@ -546,207 +546,161 @@
 	bottom: 10px;
 	right: 10px;
 	z-index: 99;
+
+	svg {
+		mix-blend-mode: difference
+	}
+
+	// mix-blend-mode: lighten;
 }
 
 
-#cssmenu,
-#cssmenu ul,
-#cssmenu ul li,
-#cssmenu ul li a{
-	display:block;
-	position:relative;
+
+
+
+
+.header__menu ul {
+	margin: 0;
 }
-#cssmenu:after,
-#cssmenu > ul:after{
-	content:".";
-	display:block;
-	clear:both;
-	visibility:hidden;
-	line-height:0;
-	height:0
+
+.menu__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-#cssmenu > ul > li{
-	float:left;
+
+.menu__list>li {
+  margin-right: 30px;
 }
-#cssmenu > ul > li > a{
-	padding:17px;
+
+.menu__list>li>a {
 	color: $white;
 }
-#cssmenu > ul > li:hover > a,
-#cssmenu ul li.active a,
-#cssmenu ul li.has-sub.active:hover a{
-	color: $white;
-	transition:color .3s ease;
+
+.menu__list li a {
+	display: inline-block;
+	width: 100%;
+	max-width: 200px;
+	min-height: 40px;
+ 	padding: 15px;
+ 	transition: all .3s ease-out;
 }
 
-#cssmenu > ul > li.has-sub > a{
-	padding-right:30px;
-}
-#cssmenu > ul > li.has-sub > a:after{
-	position:absolute;
-	top:16px;
-	right:8px;
-	width:15px;
-	height:15px;
-	display:block;
-	font-family: 'icomoon' !important;
-	content: "\e900";
+.header__menu ul ul,
+.header__menu ul ul ul {
+  display: none;
+  position: absolute;
+  width: max-content;
+  background: $white;
 }
 
-#cssmenu ul ul{
-	position:absolute;
-	left:-9999px;
-}
-#cssmenu ul ul li{
-	height:0;
-	background: $white;
-	transition:all .25s ease;
-}
-#cssmenu li:hover > ul{
-	left:auto;
-}
-#cssmenu li:hover > ul > li{
-	height:35px;
-}
-#cssmenu ul ul ul{
-	margin-left:100%;
-	top:0;
-}
-#cssmenu ul ul li a{
-	padding:11px 15px;
-	width:170px;
+.header__menu ul ul a,
+.header__menu ul ul ul a {
 	color: $text;
 }
 
-#cssmenu ul ul li:hover > a,
-#cssmenu ul ul li a:hover{
-	color: $black;
+.header__menu ul ul a:hover,
+.header__menu ul ul ul a:hover {
+	color: $blue;
 }
-#cssmenu ul ul li.has-sub > a:after{
-	position:absolute;
-	top:8px;
-	right:11px;
-	width:15px;
-	height:15px;
-	display:block;
+
+.header__menu ul ul {
+  left: 0;
+  top: 100%;
+}
+
+.header__menu ul ul ul {
+  left: 100%;
+  top: 0;
+}
+
+.header__menu ul li.has-sub {
+  position: relative;
+}
+
+.header__menu ul li.has-sub:hover>ul {
+  display: block;
+}
+
+.header__menu ul li.has-sub>a {
+	position: relative;
+	padding-right: 25px;
+}
+
+.header__menu ul li.has-sub>a:after {
+	position: absolute;
+	right: 7px;
+	top: 45%;
+	transform: translateY(-50%);
 	font-family: 'icomoon' !important;
 	content: "\e900";
+}
+
+.header__menu ul ul li.has-sub>a:after {
 	transform: rotate(-90deg);
+	top: 35%;
 }
 
-#cssmenu ul ul li.has-sub:hover,
-#cssmenu ul li.has-sub ul li.has-sub ul li:hover{
-	background: $back;
+@media(max-width: 1220px) {
+  .menu__list>li>a {
+    color: $text;
+  }
+  .header__menu {
+  	display: none;
+    background: $white;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 80px);
+    padding: 50px 0;
+    overflow-y: auto;
+  }
+  .header__menu ul {
+    display: block;
+    font-size: 20px;
+  }
+  .header__menu ul li a {
+  	max-width: max-content;
+  }
+  .header__menu ul li.has-sub:hover>ul {
+    display: none;
+  }
+  .header__menu ul ul,
+  .header__menu ul ul ul {
+    position: static;
+  }
+  .header__menu ul ul {
+  	font-size: 18px;
+  }
+  .header__menu ul ul ul {
+  	font-size: 16px;
+  }
+  .header__menu ul li.has-sub>a {
+  	min-width: 200px;
+  }
+  .header__menu ul ul li a,
+  .header__menu ul ul ul li a {
+  	max-width: 100%;
+  }
+  .header__menu ul li.has-sub>a:after {
+  	top: 28%;
+  	transform: rotate(-90deg);
+  }
+  .header__menu ul ul li.has-sub>a:after{
+  	top: 30%;
+  }
+  .header__menu ul ul {
+  	width: 100%;
+  }
+  .active-link {
+  	color: $blue !important; 	
+  }
+  .header__menu ul li.has-sub>a.active-link:after {
+  	transform: rotate(0) !important;
+  }
 }
 
-
-@media screen and (max-width:1220px){
-	#cssmenu {
-		position: absolute;
-		left: 0;
-		top: 80px;
-		width: 100%;	
-		background-color: $white;
-		overflow-y: auto;
-		display: none;
-		padding: 50px 0;
-		height: calc(100vh - 80px);
-		>ul {
-			margin: 0;
-			li {
-				a {
-					color: $text;
-					font-size: 20px;
-				}
-			}
-		}
-	}
-
-	#cssmenu > ul > li:hover > a,
-	#cssmenu ul li.active a,
-	#cssmenu ul li.has-sub.active:hover a{
-		color: $blue;
-	}
-
-	#cssmenu ul li{
-		width:100%;
-	}
-	#cssmenu ul li:hover{
-		color: $blue;
-	}
-	#cssmenu ul ul li,
-	#cssmenu li:hover > ul > li{
-		height:auto;
-	}
-	#cssmenu ul li a,
-	#cssmenu ul ul li a{
-		width:100%;
-	}
-	#cssmenu > ul > li{
-		float:none;
-	}
-	#cssmenu ul ul li a{
-		padding-left:25px;
-	}
-
-	#cssmenu ul ul li:hover{
-		background:$white!important;
-	}
-	#cssmenu ul ul ul li a{
-		padding-left:35px;
-	}
-	#cssmenu ul ul li a{
-		color:$text;
-	}
-	#cssmenu ul ul li:hover > a,
-	#cssmenu ul ul li.active > a{
-		color:$blue;
-	}
-	#cssmenu ul ul,
-	#cssmenu ul ul ul{
-		position:relative;
-		left:0;
-		width:100%;
-		margin:0;
-	}
-
-	#cssmenu > ul > li.has-sub > a:after,
-	#cssmenu ul ul > li.has-sub > a:after{
-		display:none;
-	}
-
-	#cssmenu .submenu-button{
-		position:absolute;
-		z-index:99;
-		right:0;
-		top:0;
-		display:block;
-		height:100%;
-		width:46px;
-		cursor:pointer;
-	}
-
-	#cssmenu ul ul .submenu-button{
-		height:100%;
-		width:40px;
-	}
-	#cssmenu .submenu-button:after{
-		position:absolute;
-		top:18px;
-		right:15px;
-		width:15px;
-		height:15px;
-		display:block;
-		font-family: 'icomoon' !important;
-		content: "\e900";
-		color: $text;
-		transform: rotate(-90deg);
-	}
-	#cssmenu ul ul .submenu-button:after{
-		top:13px;
-		right:10px;
-	}
-}
 
 .popup-fade {
 	display: none;
