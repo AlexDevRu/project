@@ -1,0 +1,722 @@
+@media(max-width: 1420px) {
+	.header {
+		&__tels {
+			margin-right: auto;
+			margin-left: 40px;
+		}
+		&__menu {
+			a {
+				margin-right: 30px;
+			}
+		}
+		&__search {
+			margin-left: 30px;
+		}
+	}
+}
+
+@media(max-width: 1367px) {
+	.btn {
+		padding-right: 76px;
+		height: 55px;
+		line-height: 55px;
+		&:after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			line-height: 55px;
+			width: 55px;
+			height: 55px;
+		}
+	}
+
+	.intro {
+		background-position: -90px -130px;
+		&__inner {
+			padding-top: 75px;
+		}
+		&__title {
+			font-size: 64px;
+		}
+		&__list {
+			ul {
+				li {
+					flex-basis: 50%;
+					margin-bottom: 20px;
+				}
+			}
+		}
+		&__btn {
+			margin-bottom: 75px;
+		}
+	}
+
+	.tasks {
+		&__inner {
+			padding-bottom: 124px;
+		}
+		&__title {
+			margin-bottom: 40px;
+			font-size: 64px;
+			line-height: 76px;
+		}
+	}
+
+	.advantages {
+		&__title {
+			max-width: 100%;
+		}
+		&__items {
+			flex-basis: 100%;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		&__item {
+			margin-right: 30px;
+			max-width: 500px;
+		}
+	}
+
+	.courses {
+		&__inner {
+			padding-top: 62px;
+			padding-bottom: 124px;
+			background-position: 90% 100px;
+			background-size: 408px;
+		}
+		&__title {
+			margin-bottom: 30px;
+		}
+		&__text {
+			max-width: 588px;
+			margin-bottom: 40px;
+		}
+		&__item:first-child {
+			max-width: 588px;
+		}
+		&__item:last-child {
+			max-width: 500px;
+		}
+	}
+
+	.information {
+		&__inner {
+			padding: 62px 0;
+		}
+		&__title {
+			font-size: 64px;
+			margin-bottom: 30px;
+		}
+		&__text {
+			max-width: 873px;
+			margin-bottom: 40px;
+		}
+		&__wrapper {
+			margin-bottom: 0;
+			flex-wrap: wrap;
+			div {
+				flex-basis: 100%;
+			}
+		}
+		&__right {
+			display: flex;
+			justify-content: space-between;
+			
+		}
+		&__items {
+			
+		}
+		&__item {
+			flex-basis: 50%;
+			max-width: 500px;
+			&+& {
+				margin-left: 40px;
+			}
+		}
+	}
+
+	.blog {
+		&__inner {
+			padding: 62px 0;
+		}
+		&__title {
+			font-size: 64px;	
+		}
+		&-slide {
+			max-width: 484px;
+			&__image {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@media(max-width: 1100px) {
+	.advantages {
+		&__title {
+			font-size: 52px;
+		}
+	}
+}
+
+@media(max-width: 1178px) {
+	.courses {
+		&__inner {
+			padding-top: 50px;
+			padding-bottom: 100px;
+		}
+		&__title {
+			font-size: 52px;
+		}
+		&__text {
+			max-width: 588px;
+			margin-bottom: 40px;
+		}
+		&__item:first-child {
+			max-width: 588px;
+		}
+		&__item:last-child {
+			max-width: 500px;
+		}
+	}
+}
+
+@media(max-width: 1040px) {
+	.blog {
+		&__inner {
+			padding: 50px 0;
+		}
+		&__title {
+			font-size: 52px;	
+		}
+		&-slide {
+			max-width: 350px;
+		}
+	}
+
+	.footer {
+		&__inner {
+			padding-top: 91px;
+			padding-bottom: 100px;
+		}
+		&__logo {
+			margin-bottom: 41px;
+			img {
+				width: 70px;
+			}
+		}
+		&__socials {
+			margin-top: 61px;
+			ul {
+				flex-direction: row;
+				li+li {
+					margin-left: 10px;
+				}
+				a {
+					margin-bottom: 0;
+				}
+			}
+		}
+		&__wrapper {
+			flex-wrap: wrap;
+		}
+		&__logo, &__socials {
+			flex-basis: 100%;
+		}
+		&-navigation, &-contacts {
+			.title {
+				font-size: 34px;
+				margin-bottom: 20px;
+			}
+		}
+		&__copyright {
+			margin-top: 50px;
+		}
+	}
+}
+
+@media(max-width: 1220px) {
+	.header {
+		&__burger {
+			display: block;
+		}
+		&__tels {
+			margin: 0;
+			flex-direction: row;
+			a+a {
+				margin-left: 30px;
+			}
+		}
+		&__search {
+			margin: 0;
+			display: block;
+			position: relative;
+			padding: 50px 20px 50px 20px;
+			a {
+				display: none;
+			}
+			input {
+				width: 100%;
+				display: block !important;
+				padding: 10px 30px 10px 10px;
+				color: $text;
+				&::placeholder {
+			    	color: $text;
+			    }
+			}
+			&_wrapper {
+				width: 107px;
+				display: inline-block;
+				position: relative;
+				border: 1px solid transparent;
+				transition: width .3s ease-out;
+			}
+			&_wrapper:after {
+				position: absolute;
+				content: url('../img/header/search.svg');
+				top: 50%;
+				transform: translateY(-50%);
+				right: 10px;
+			}
+		}
+	}
+
+	.intro {
+		&__socials_in_menu {
+			position: static;
+			padding: 0 20px;
+			ul {
+				display: block;
+				li {
+					display: inline-block !important;
+					width: auto !important;
+					margin-right: 16px;
+				}
+			}
+			img {
+				filter: invert(100%);
+			}
+		}
+	}
+
+	.benefits {	
+		&__inner {
+			padding-top: 124px;
+			padding-bottom: 62px;
+		}
+		&__title {
+			max-width: 100%;
+		}
+		&__content {
+			max-width: 638px;
+		}
+	}
+
+	.pluses {
+		&__items {
+			flex-basis: 100%;
+			margin: -12px -30px 60px -30px;
+		}
+		&__item {
+			margin: 12px 30px;
+			width: 170px;
+		}
+		&__title {
+			font-size: 52px;
+		}
+	}
+}
+
+@media(max-width: 850px) {
+	.offers {
+		&__inner {
+			padding-top: 100px;
+			padding-bottom: 50px;
+		}
+		&__title {
+			margin-bottom: 30px;
+			font-size: 52px;
+		}
+		&__text {
+			margin-bottom: 40px;
+			max-width: 100%;
+			p+p {
+				margin-top: 20px;
+			}
+		}
+		&__subtitle {
+			margin-bottom: 50px;
+		}
+		&__items {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+		&__item {
+			flex-basis: 50%;
+			margin-bottom: 40px;
+		}
+	}
+
+	.information {
+		&__inner {
+			padding: 50px 0;
+		}
+		&__title {
+			font-size: 52px;
+		}
+		&__text {
+			max-width: 588px;
+		}
+		&__right, &__items {
+			flex-wrap: wrap;
+		}
+		&__item {
+			flex-basis: 100%;
+			max-width: 604px;
+			&+& {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media(max-width: 768px) {
+	.popup {
+		top: auto;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		transform: translate(0, 0);
+	}
+	.intro {
+		background-position: -100px 120px;
+		background-size: 900px 500px;
+		&__inner {
+			padding-top: 60px;
+			padding-bottom: 200px;
+		}
+		&__title {
+			font-size: 52px;
+		}
+		&__list {
+			ul {
+				li {
+					flex-basis: 100%;
+					margin-bottom: 35px;
+				}
+			}
+		}
+		&__socials {
+			left: 0;
+			bottom: 40px;
+			ul {
+				flex-direction: row;
+				a {
+					margin-right: 16px;
+				}
+			}
+		}
+	}
+
+	.benefits {	
+		&__inner {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		&__title {
+			font-size: 52px;
+		}
+	}
+
+	.tasks {
+		&__inner {
+			padding-top: 50px;
+			padding-bottom: 100px;
+		}
+		&__title {
+			font-size: 52px;
+			line-height: 62px;
+		}
+	}
+
+	.courses {
+		&__inner {
+			padding-top: 45px;
+			padding-bottom: 90px;
+		}
+		&__title {
+			font-size: 34px;
+		}
+		&__item {
+			&_title {
+				font-size: 24px;
+			}
+		}
+	}
+
+	.consultation {
+		&__inner {
+			padding: 70px 24px;
+		}
+		&__form {
+			padding: 50px;
+		}
+		&__controls {
+			input[type="text"] {
+				flex-basis: 100%;
+			}
+		}
+		&__checkbox {
+			margin-top: 0;
+		}
+	}
+
+	.blog {
+		&-slide {
+			max-width: 484px;
+		}
+	}
+}
+
+@media(max-width: 550px) {
+	.popup {
+		&__form {
+			display: block;
+		}
+	}
+	#consultation__fixed {
+		bottom: -10px;
+		right: 10px;
+
+		svg {
+			width: 40px;
+		}
+	}
+	.header {
+		&__logo {
+			img {
+				max-width: 54px;
+			}
+		}
+		&__burger {
+			width: 30px;
+			height: 28px;
+			span, 
+			&:before, 
+			&:after {
+				height: 3px;
+			}
+			span {
+				top: 12px;
+				height: 3.5px;
+			}
+			&:before {
+				top: 3px;
+			}
+			&:after {
+				bottom: 3px;
+			}
+
+			&.menu-opened:after {
+				bottom: 10px;
+			}
+		}
+		&__tels {
+			flex-direction: column;
+			font-size: 14px;
+			a+a {
+				margin-left: 0;
+				margin-bottom: 10px;
+
+			}
+		}
+	}
+
+	.intro {
+		padding-top: 50px;
+		&__title {
+			font-size: 34px;
+		}
+	}
+	.tasks {
+		&__inner {
+			padding-top: 40px;
+			padding-bottom: 90px;
+		}
+		&__title {
+			font-size: 34px;
+			line-height: 41px;
+		}
+	}
+	.advantages {
+		&__inner {
+			padding-top: 100px;
+			padding-bottom: 50px;
+		}
+		&__title {
+			font-size: 32px;
+		}
+		&__item {
+			&_title {
+				font-size: 24px;
+			}
+		}
+	}
+	.offers {
+		&__inner {
+			padding-top: 90px;
+			padding-bottom: 45px;
+		}
+		&__title {
+			margin-bottom: 20px;
+			font-size: 34px;
+		}
+		&__subtitle {
+			margin-bottom: 40px;
+			font-size: 24px;
+		}
+		&__item {
+			margin-bottom: 60px;
+			max-width: 140px;
+		}
+	}
+	.blog {
+		&__inner {
+			padding: 45px 0;
+		}
+		&__title {
+			font-size: 34px;
+		}
+		&-slide {
+			max-width: 271px;
+			&__date {
+				display: none;
+			}
+			&__title {
+				font-size: 18px;
+				color: $white;
+				position: absolute;
+				bottom: 0;
+				padding: 5px;
+			}
+		}
+		.slick-dots {
+			margin-top: 40px;
+		}
+	}
+	.footer {
+		&__inner {
+			padding: 90px 0;
+		}
+		&__logo {
+			img {
+				width: 54px;
+			}
+		}
+		&__socials {
+			margin-top: 50px;
+		}
+		&-navigation {
+			margin-bottom: 40px;
+		}
+		&-navigation, &-contacts {
+			flex-basis: 100%;
+		}
+	}
+}
+
+@media(max-width: 426px) {
+	.benefits {	
+		&__inner {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		&__title {
+			font-size: 34px;
+		}
+	}
+
+	.pluses {
+		&__items {
+			margin: -12px -15px 60px -15px;
+		}
+		&__item {
+			margin: 12px 15px;
+			width: 155px;
+		}
+		&__title {
+			font-size: 34px;
+		}
+	}
+	.consultation {
+		&__form {
+			padding: 60px 12px;
+		}
+		&__title {
+			font-size: 24px;
+		}
+	}
+
+	.information {
+		&__inner {
+			padding: 45px 0;
+		}
+		&__title {
+			font-size: 34px;
+		}
+		&__item {
+			&-title {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+@media(max-width: 376px) {
+	
+	.intro {
+		background-position: -240px 70px;
+		background-size: 592px 355px;
+		&__inner {
+			padding-top: 50px;
+			padding-bottom: 40px;
+		}
+		&__title {
+			margin-bottom: 270px;
+		}
+		&__btn {
+			margin-bottom: 30px;
+		}
+		&__socials {
+			display: none;
+		}
+		&__list {
+			ul {
+				font-size: 18px;
+			}
+		}
+	}
+	.consultation {
+		&__inner {
+			padding: 30px 0px;
+		}
+		&__form {
+			padding: 60px 12px;
+		}
+		&__title {
+			font-size: 24px;
+		}
+	}
+}
+
+@media(max-width: 321px) {
+	.offers {
+		&__item {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+	}
+}

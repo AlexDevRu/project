@@ -1,0 +1,246 @@
+@import "vars";
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: $inter;
+	font-size: 16px;
+	color: $text;
+	overflow-x: hidden;
+}
+
+body.lock {
+	overflow: hidden;
+}
+
+img {
+	max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+input:focus, input:active,
+button:focus, button:active,
+textarea:focus, textarea:active {
+	outline: none;
+}
+
+button {
+	border: none;
+	background: transparent;
+}
+
+ul, ol {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, textarea {
+	padding: 18px 27px;
+	color: #606060;
+	border: none;
+}
+
+.btn {
+	//padding: 30px 120px 30px 30px;
+	padding-right: 90px;
+	//border: 1px solid red;
+	position: relative;
+	display: inline-block;
+	line-height: 69px;
+}
+
+.btn .circle {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	//right: 30px;
+	right: 0;
+	display: block;
+	content: url('../img/intro/arrow.svg');
+	background-color: $dark_pink;
+	border-radius: 50%;
+	text-align: center;
+	width: 69px;
+	height: 69px;
+	transition: .3s;
+	padding: 18px;
+}
+button {
+	cursor: pointer;
+}
+
+// #menu {
+// 	border-radius: 50px;
+//   width: 50px;
+//   height: 50px;
+//   position: absolute;
+//   left: 83px;
+//   top: 700px;
+//   transition: .3s;
+//   background-color: #000;
+// }
+  
+// #box1 {
+// 	//position: relative;
+// 	width: 200px;
+//   height: 200px;
+//   border: 1px solid red;
+// }
+
+// .btn {
+// 	padding: 20px 110px 20px 20px;
+// 	border: 1px solid red;
+// 	position: relative;
+// 	display: inline-block;
+// 	line-height: 69px;
+// 	&:after {
+// 		position: absolute;
+// 		top: 50%;
+// 		transform: translateY(-50%);
+// 		right: 20px;
+// 		display: block;
+// 		content: url('../img/intro/arrow.svg');
+// 		background-color: $dark_pink;
+// 		border-radius: 50%;
+// 		text-align: center;
+// 		width: 69px;
+// 		height: 69px;
+// 	}
+// }
+
+.title {
+	color: $darkblack;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 1.2;
+	margin: 0;
+}
+
+.container {
+	padding: 0 20px;
+	margin: 0 auto;
+	max-width: 1520px;
+}
+
+.block {
+	width: 473px;
+	margin: 15px;
+}
+
+@mixin wrapper($offset) {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -$offset;
+}
+
+.items {
+	@include wrapper(15px);
+}
+
+
+
+
+
+.control {
+	display: block;
+	position: relative;
+	padding-left: 30px;
+	cursor: pointer;
+	input {
+		position: absolute;
+	    z-index: -1;
+	    opacity: 0;
+	}
+}
+    
+
+// Custom control
+.control__indicator {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	height: 15px;
+	width: 15px;
+	border: 0.7px solid $text;
+
+	// Hover when checked
+	.control:hover input:not([disabled]):checked ~ &,
+	.control input:checked:focus ~ & {
+		background: $white;
+	}
+	// Hover and focus
+	.control:hover input ~ &,
+	.control input:focus ~ & {
+		background: $white;
+	}	    
+	// Checked
+	.control input:checked ~ & {
+		background: $white;
+	}
+
+	&:after {
+		content: '';
+	    position: absolute;
+	    display: none;
+		.control input:checked ~ & {
+		  display: block;
+		}
+		
+		.control--checkbox & {
+		  left: 6px;
+		  top: 2px;
+		  width: 3px;
+		  height: 8px;
+		  border: 0.7px solid $text;
+		  border-width: 0 1px 1px 0;
+		  transform: rotate(45deg);
+		}	  
+	}
+}
+
+.slick-dots {
+	font-size: 0;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	button {
+		border-radius: 50%;
+		width: 9px;
+		height: 9px;
+		margin-right: 6px;
+		background-color: #a0a0a0;
+		padding: 0;
+	}
+}
+
+.slick-active button {
+	background-color: $darkblack;
+}
+
+.socials {
+	ul {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		a {
+			display: block;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+input[type="text"] {
+	padding: 4px;
+	border-bottom: 1px solid $text;
+	max-width: 100%;
+}
