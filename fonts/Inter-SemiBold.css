@@ -6,7 +6,7 @@
     url("../fonts/Inter-SemiBold.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
     url("../fonts/Inter-SemiBold.svg#Inter SemiBold") format("svg"); /* iOS 4.1- */
     font-style: normal;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 

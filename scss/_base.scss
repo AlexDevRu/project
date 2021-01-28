@@ -7,7 +7,8 @@
 body {
 	margin: 0;
 	font-family: $inter;
-	font-size: 16px;
+	font-size: 14px;
+	line-height: 1.5;
 	color: $text;
 	overflow-x: hidden;
 }
@@ -24,8 +25,8 @@ h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 }
 
-p {
-	line-height: 1.5;
+p+p {
+	margin-top: 20px;
 }
 
 input:focus, input:active,
@@ -36,6 +37,11 @@ textarea:focus, textarea:active {
 
 button {
 	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+input {
 	background: transparent;
 }
 
@@ -49,13 +55,12 @@ a {
 }
 
 input, textarea {
-	padding: 18px 27px;
-	color: #606060;
 	border: none;
 }
 
 .btn {
 	//padding: 30px 120px 30px 30px;
+	padding-left: 0;
 	padding-right: 90px;
 	//border: 1px solid red;
 	position: relative;
@@ -79,9 +84,7 @@ input, textarea {
 	transition: .3s;
 	padding: 18px;
 }
-button {
-	cursor: pointer;
-}
+
 
 // #menu {
 // 	border-radius: 50px;
@@ -124,8 +127,8 @@ button {
 
 .title {
 	color: $darkblack;
-	font-weight: bold;
-	font-size: 64px;
+	font-weight: 700;
+	font-size: 70px;
 	line-height: 1.2;
 	margin: 0;
 }
@@ -237,8 +240,12 @@ button {
 		flex-direction: column;
 		margin: 0;
 		a {
+			opacity: .8;
 			display: block;
 			margin-bottom: 10px;
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 }
@@ -247,4 +254,8 @@ input[type="text"] {
 	padding: 4px;
 	border-bottom: 1px solid $text;
 	max-width: 100%;
+}
+
+section.blue, footer.blue {
+	background-color: $light_blue;
 }
