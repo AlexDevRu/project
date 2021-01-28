@@ -70,9 +70,9 @@ input, textarea {
 
 .btn .circle {
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	//right: 30px;
+	//top: 50%;
+	//transform: translateY(-50%);
+	top: 0;
 	right: 0;
 	display: block;
 	content: url('../img/intro/arrow.svg');

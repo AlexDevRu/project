@@ -18,15 +18,26 @@ $('.header__search input').blur(function(e) {
 var mediaQuery1 = window.matchMedia('(max-width: 1220px)');
 var mediaQuery2 = window.matchMedia('(max-width: 550px)');
 var mediaQuery3 = window.matchMedia('(max-width: 376px)');
+var mediaQuery4 = window.matchMedia('(max-width: 768px)');
 
 moveImageBenefits(mediaQuery1);
 moveImageCourses(mediaQuery1);
 moveTitleSlide(mediaQuery2);
 moveButtonBlog(mediaQuery3);
+changeConsultationColor(mediaQuery4);
 mediaQuery1.addListener(moveImageBenefits);
 mediaQuery1.addListener(moveImageCourses);
 mediaQuery2.addListener(moveTitleSlide);
 mediaQuery3.addListener(moveButtonBlog);
+mediaQuery4.addListener(changeConsultationColor);
+
+function changeConsultationColor(m) {
+  if(m.matches) {
+    $('.consultation').removeClass('blue');
+  } else {
+    $('.consultation').addClass('blue');
+  }
+}
 
 var url;
 function moveImageBenefits(m) {
@@ -141,16 +152,14 @@ function mediafunc768() {
     $('.header__menu').append($('.intro__socials').clone().addClass('intro__socials_in_menu').removeClass('intro__socials'));
   } else {
     $('.menu__list>li.has-sub').each(function(index, el) {
-      if(!$('.menu__item')) {
-        var menu_title = $(el).find('>a').text();
+      var menu_title = $(el).find('>a').text();
         $(el).find('>ul').prepend('<li class="menu__item"><h1 class="title menu__title">'+menu_title+'</h1><div class="menu__close"></div></li>');
         $('.menu__close').click(function() {
           $(this).closest('li.has-sub').find('>.submenu-button').removeClass('active');
           $(this).closest('li.has-sub').find('>a').removeClass('active-link');
           $(this).closest('li.has-sub').find('>ul').slideUp();
         });
-      }
-    });   
+    });
 
     $('.header__menu').after($('.header__search'));
     $('.header__search input').off('focus', onfocusInputMobile);
@@ -226,7 +235,7 @@ $(window).on("scroll", function() {
 });
 
 
-var buttons = $('.btn .circle').map(function(index, elem) {
+var buttons = $('.btn').map(function(index, elem) {
   return ({rect: elem.getBoundingClientRect(), elem: elem});
 });
 var btn = null;
@@ -250,27 +259,46 @@ $('body').on('mousemove', function(event) {
   }
   if(!btn) {
     for(var obj of buttons) {
-      $(obj.elem).css({transform: 'translate(0, -50%)'});
+      //$(obj.elem).find('.circle').css({transform: 'translate(0, -50%)'});
+      $(obj.elem).find('.circle').css({top: '0', right: '0'});
     }
     btn = null;
   } else {
     var shiftX = 0, shiftY = 0;
     
+    // if(Math.abs(btn.rect.top - y) < Math.abs(btn.rect.bottom - y)) {
+    //   console.log('1');
+    //   shiftY = -$(btn.elem).find('.circle').height()/2 + (y - btn.rect.top);
+    // } else {
+    //   shiftY = -$(btn.elem).find('.circle').height()/2 + (btn.rect.bottom - y);
+    // }
+
+    // if(Math.abs(btn.rect.left - x) < Math.abs(btn.rect.right - x)) {
+    //   shiftX = (btn.rect.left - x);
+    // } else {
+    //   console.log('2');
+    //   shiftX = (x - btn.rect.right);
+    // }
+
     if(Math.abs(btn.rect.top - y) < Math.abs(btn.rect.bottom - y)) {
-      shiftY = -$(btn.elem).height()/2 + (btn.rect.top - y);
+      shiftY = y - btn.rect.top;
     } else {
-      shiftY = -$(btn.elem).height()/2 + (btn.rect.bottom - y);
+      shiftY =  y - btn.rect.bottom;
     }
 
     if(Math.abs(btn.rect.left - x) < Math.abs(btn.rect.right - x)) {
-      shiftX = (btn.rect.left - x);
+      //shiftX = x - btn.rect.left;
     } else {
-      shiftX = (btn.rect.right - x);
+      shiftX = x - btn.rect.right;
     }
 
     console.log('translate('+shiftX+'px ,'+shiftY+'px)');
 
-    $(btn.elem).css({transform: 'translate('+shiftX+'px ,'+shiftY+'px)'});
+    $(btn.elem).find('.circle').css({
+      //transform: 'translate('+shiftX%offset+'px ,'+shiftY%offset+'px)'
+      top: shiftY + 'px',
+      right: -shiftX + 'px'
+    });
     //$(btn.elem).css({transform: 'translate('+x%10+'px ,'+y%10+'px)'});
   }
 });
