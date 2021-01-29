@@ -366,11 +366,29 @@
 
 @media(max-width: 768px) {
 	.popup {
-		top: auto;
-		left: 0;
-		bottom: 0;
 		width: 100%;
-		transform: translate(0, 0);
+		left: 0;
+		padding: 75px 43px;
+		&__title {
+			margin-bottom: 45px;
+			font-size: 34px;
+		}
+		&__form {
+			margin-right: -64px;
+			flex-direction: row;
+			input {
+				width: 303px;
+				margin-right: 64px;
+			}
+			button {
+				margin-top: 0;
+			}
+		}
+	}
+	.popup-close {
+		bottom: auto;
+		right: 38px;
+		top: 86px;	
 	}
 	.intro {
 		//background-position: -100px 120px;
@@ -486,9 +504,20 @@
 
 @media(max-width: 550px) {
 	.popup {
+		padding: 50px 12px;
 		&__form {
 			display: block;
+			margin-right: 0;
+			input {
+				width: 303px;
+				margin-right: 0;
+				margin-bottom: 45px;
+			}
 		}
+	}
+	.popup-close {
+		right: 12px;
+		top: 53px;	
 	}
 	.header {
 		&__logo {
