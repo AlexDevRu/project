@@ -247,24 +247,18 @@ $('body').on('mousemove', function(event) {
   for(var obj of buttons) {
     if(obj.rect.top-offset <= y && obj.rect.bottom+offset >= y && 
       obj.rect.left-offset <= x && obj.rect.right+offset >= x) {
-      // console.log(x, y);
-      // console.log('top', obj.rect.top);
-      // console.log('bottom', obj.rect.bottom);
-      // console.log('left', obj.rect.left);
-      // console.log('right', obj.rect.right);
-      // console.log('searched');
       btn = obj;
       break;
     }
   }
   if(!btn) {
     for(var obj of buttons) {
-      //$(obj.elem).find('.circle').css({transform: 'translate(0, -50%)'});
       $(obj.elem).find('.circle').css({top: '0', right: '0'});
     }
     btn = null;
   } else {
-    var shiftX = 0, shiftY = 0;
+    var shiftX = 0, 
+    shiftY = 0;
     
     // if(Math.abs(btn.rect.top - y) < Math.abs(btn.rect.bottom - y)) {
     //   console.log('1');
@@ -280,25 +274,19 @@ $('body').on('mousemove', function(event) {
     //   shiftX = (x - btn.rect.right);
     // }
 
-    if(Math.abs(btn.rect.top - y) < Math.abs(btn.rect.bottom - y)) {
-      shiftY = y - btn.rect.top;
+    if(btn.rect.top <= y && btn.rect.bottom >= y && btn.rect.left <= x && btn.rect.right >= x) {
+      shiftY = (y - btn.rect.top) - $(btn.elem).find('.circle').height()/2;
+      shiftX = (btn.rect.right - x) - $(btn.elem).find('.circle').width()/2;
     } else {
-      shiftY =  y - btn.rect.bottom;
-    }
 
-    if(Math.abs(btn.rect.left - x) < Math.abs(btn.rect.right - x)) {
-      //shiftX = x - btn.rect.left;
-    } else {
-      shiftX = x - btn.rect.right;
     }
-
-    console.log('translate('+shiftX+'px ,'+shiftY+'px)');
 
     $(btn.elem).find('.circle').css({
-      //transform: 'translate('+shiftX%offset+'px ,'+shiftY%offset+'px)'
       top: shiftY + 'px',
-      right: -shiftX + 'px'
+      right: shiftX + 'px'
     });
+
+    //console.log('translate('+shiftX+'px ,'+shiftY+'px)');
     //$(btn.elem).css({transform: 'translate('+x%10+'px ,'+y%10+'px)'});
   }
 });
